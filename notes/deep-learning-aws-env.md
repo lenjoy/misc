@@ -23,6 +23,21 @@ VERSION_CODENAME=xenial
 UBUNTU_CODENAME=xenial
 ```
 
+## System packages
+```
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends \
+      bzip2 \
+      g++ \
+      git \
+      graphviz \
+      libgl1-mesa-glx \
+      libhdf5-dev \
+      openmpi-bin \
+      wget \
+      emacs
+```
+
 ## docker & nvidia-docker for GPU
 
 ### Docker
@@ -58,12 +73,18 @@ GPU driver
 http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#package-manager-installation
 
 ```
-$ lspci | grep -i nvidia
-00:1e.0 3D controller: NVIDIA Corporation GK210GL [Tesla K80] (rev a1)
+$ lspci -nnk | grep VGA -A8
+00:02.0 VGA compatible controller [0300]: Cirrus Logic GD 5446 [1013:00b8]
+	Subsystem: XenSource, Inc. GD 5446 [5853:0001]
+	Kernel modules: cirrusfb
+00:03.0 Ethernet controller [0200]: Device [1d0f:ec20]
+	Kernel driver in use: ena
+	Kernel modules: ena
+00:1e.0 3D controller [0302]: NVIDIA Corporation GK210GL [Tesla K80] [10de:102d] (rev a1)
+	Subsystem: NVIDIA Corporation GK210GL [Tesla K80] [10de:106c]
+	Kernel driver in use: nvidia
 ```
-```
-sudo apt install gcc
-```
+
 
 Choose the CUDA version by platform type: https://developer.nvidia.com/cuda-downloads
 
@@ -156,4 +177,19 @@ plugins: xdist-1.22.2, pep8-1.0.6, forked-0.2, cov-2.5.1
 [gw1] linux Python 3.6.3 cwd: /src
 [gw0] Python 3.6.3 |Anaconda, Inc.| (default, Oct 13 2017, 12:02:49)  -- [GCC 7.2.0]
 [gw1] Python 3.6.3 |Anaconda, Inc.| (default, Oct 13 2017, 12:02:49)  -- [GCC 7.2.0]
+```
+
+## GPU usage monitoring
+
+* nvidia-smi
+```
+watch -n 1 nvidia-smi
+```
+
+* glances
+https://github.com/nicolargo/glances
+```
+pip install glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
+
+glances
 ```
