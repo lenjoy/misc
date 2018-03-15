@@ -179,6 +179,17 @@ plugins: xdist-1.22.2, pep8-1.0.6, forked-0.2, cov-2.5.1
 [gw1] Python 3.6.3 |Anaconda, Inc.| (default, Oct 13 2017, 12:02:49)  -- [GCC 7.2.0]
 ```
 
+Check GPU info inside docker
+```
+$ nvidia-docker run -it -v ~/code/keras:/src/workspace -v "/home/$USER/Data":/data --env KERAS_BACKEND=tensorflow keras bash -c "python -c \"import tensorflow as tf; tf.Session(config=tf.ConfigProto(log_device_placement=True))\""
+```
+you can see something like
+```
+2018-03-15 03:26:52.821258: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1212] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:00:1e.0
+```
+
 ## GPU usage monitoring
 
 * nvidia-smi
