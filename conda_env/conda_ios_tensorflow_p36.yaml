@@ -1,7 +1,11 @@
 # Install anaconda3
 #
-# Usage:
+# One time setup
 #   sed -e s/USER/$USER/g conda_tensorflow_p36.yaml > /tmp/conda_$USER_tensorflow_p36.yaml && /anaconda3/bin/conda env create -f /tmp/conda_$USER_tensorflow_p36.yaml
+#
+# Usage:
+#   PATH="/anaconda3/bin:"$PATH source activate conda_<YOUR_USERNAME>_tensorflow_p36
+#   PATH="/anaconda3/bin:"$PATH source deactivate
 
 name: conda_USER_tensorflow_p36
 channels:
