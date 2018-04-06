@@ -1,11 +1,11 @@
 # Install anaconda3
 #
 # One time setup
-#   sed -e s/USER/$USER/g conda_tensorflow_p36.yaml > /tmp/conda_$USER_tensorflow_p36.yaml && /anaconda3/bin/conda env create -f /tmp/conda_$USER_tensorflow_p36.yaml
+#   sed -e s/USER/$USER/g conda_mac_tensorflow_p36.yaml > /tmp/conda_$USER_tensorflow_p36.yaml && PATH="/anaconda3/bin:"$PATH conda env create -f /tmp/conda_$USER_tensorflow_p36.yaml
 #
 # Usage:
-#   PATH="/anaconda3/bin:"$PATH source activate conda_<YOUR_USERNAME>_tensorflow_p36
-#   PATH="/anaconda3/bin:"$PATH source deactivate
+#   PATH="/anaconda3/bin:"$PATH conda activate conda_<YOUR_USERNAME>_tensorflow_p36
+#   PATH="/anaconda3/bin:"$PATH conda deactivate
 
 name: conda_USER_tensorflow_p36
 channels:
@@ -149,6 +149,7 @@ dependencies:
   - sqlite=3.22.0=h3efe00b_0
   - pip:
     - absl-py==0.1.10
+    - astor==0.6.2
     - boto==2.48.0
     - boto3==1.6.11
     - botocore==1.9.11
@@ -156,6 +157,7 @@ dependencies:
     - cycler==0.10.0
     - docutils==0.14
     - environment-kernels==1.1.1
+    - gast==0.2.0
     - gensim==3.4.0
     - grpcio==1.8.3
     - jmespath==0.9.3
@@ -176,7 +178,9 @@ dependencies:
     - smart-open==1.5.7
     - sqlalchemy==1.2.3
     - tensorboard==1.0.0a4
+    - tensorflow==1.7.0
     - tensorflow-tensorboard==1.5.1
+    - termcolor==1.1.0
     - tqdm==4.19.8
     - werkzeug==0.14.1
 prefix: /anaconda3/envs/conda_USER_tensorflow_p36
