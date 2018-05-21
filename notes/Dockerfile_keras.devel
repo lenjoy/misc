@@ -35,7 +35,7 @@ RUN wget --quiet --no-check-certificate https://repo.continuum.io/miniconda/Mini
     echo export PATH=$CONDA_DIR/bin:'$PATH' > /etc/profile.d/conda.sh
 
 
-# other system lib/tools
+# Install other system lib/tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
@@ -55,10 +55,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
 
+# Install bazel
 RUN wget --quiet --no-check-certificate https://github.com/bazelbuild/bazel/releases/download/0.13.0/bazel-0.13.0-installer-linux-x86_64.sh && \
     chmod +x bazel-0.13.0-installer-linux-x86_64.sh && \
     ./bazel-0.13.0-installer-linux-x86_64.sh && \
     echo export PATH="$PATH:$HOME/bin" >> ~/.bashrc
+
+# Install tensorflow-model-server
+RUN echo "deb [arch=amd64] http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal" | tee /etc/apt/sources.list.d/tensorflow-serving.list
+RUN curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg | apt-key add -
+RUN apt-get update && apt-get install tensorflow-model-server
 
 
 # Install Python packages and keras
