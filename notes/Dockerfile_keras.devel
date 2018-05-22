@@ -41,6 +41,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         libcurl3-dev \
         emacs \
+        gcc-4.9 \
+        libstdc++6 \
         libfreetype6-dev \
         libpng12-dev \
         libzmq3-dev \
