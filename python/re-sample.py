@@ -23,6 +23,12 @@ print(re.sub(pattern_str, '___', html))
 print('\n================= re.sub (re.DOTALL works) ====================\n')
 print(re.sub(pattern_str, '___', html, flags=re.DOTALL))
 
+print('\n================= re.sub (not working) ====================\n')
+print(re.sub(r'^```', '\n`', html))
+
+print('\n================= re.sub (re.MULTILINE works) ====================\n')
+print(re.sub(r'^```', '\n`', html, flags=re.MULTILINE))
+
 print('\n================= re.findall (find all) ====================\n')
 results = re.findall(pattern_str, html, re.DOTALL)
 for result in results:
