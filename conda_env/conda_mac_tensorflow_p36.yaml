@@ -1,11 +1,24 @@
-# Install anaconda3
+# Install anaconda3, take mac OS for instance:
+#   Follow the instruction in http://docs.continuum.io/anaconda/install/mac-os/
+#   Download "64-Bit Command-Line Installer" from https://www.anaconda.com/download/#macos
+#
+#   bash ~/Downloads/Anaconda3-5.3.1-MacOSX-x86_64.sh 
 #
 # One time setup
-#   sed -e s/USER/$USER/g conda_mac_tensorflow_p36.yaml > /tmp/conda_$USER_tensorflow_p36.yaml && PATH="/anaconda3/bin:"$PATH conda env create -f /tmp/conda_$USER_tensorflow_p36.yaml
+#   sed -e s/USER/$USER/g conda_mac_tensorflow_p36.yaml > /tmp/conda_${USER}_tensorflow_p36.yaml && PATH="/anaconda3/bin:"$PATH conda env create -f /tmp/conda_${USER}_tensorflow_p36.yaml
 #
-# Usage:
-#   PATH="/anaconda3/bin:"$PATH conda activate conda_<YOUR_USERNAME>_tensorflow_p36
+# If anything wrong such as network timeout during the installation,
+# continue the installation by
+#   env PATH="/anaconda3/bin:"$PATH conda env update -f /tmp/conda_$USER_tensorflow_p36.yaml
+# Remove env and start over
+#   env PATH="/anaconda3/bin:"$PATH conda env remove -p /anaconda3/envs/conda_${USER}_tensorflow_p36
+#
+# Usage for Python:
+#   PATH="/anaconda3/bin:"$PATH conda activate conda_${USER}_tensorflow_p36
 #   PATH="/anaconda3/bin:"$PATH conda deactivate
+#
+# Usage for Jupyter:
+#   env PATH=/anaconda3/envs/conda_${USER}_tensorflow_p36/bin:$PATH jupyter notebook
 
 name: conda_USER_tensorflow_p36
 channels:
@@ -58,7 +71,7 @@ dependencies:
   - libcxx=6.0.0=0
   - libffi=3.2.1=3
   - libgfortran=3.0.0=0
-  - libiconv=1.15=0
+  - libiconv=1.15=h470a237_3
   - libpng=1.6.28=2
   - libsodium=1.0.15=1
   - libtiff=4.0.7=1
@@ -94,7 +107,7 @@ dependencies:
   - pip=9.0.1=py36_1
   - pixman=0.34.0=1
   - prompt_toolkit=1.0.15=py36_0
-  - protobuf=3.5.0=py36_1
+  - protobuf=3.6.1
   - ptyprocess=0.5.2=py36_0
   - pycparser=2.18=py36_0
   - pydotplus=2.0.2=py36_0
@@ -171,7 +184,7 @@ dependencies:
     - pycryptodome==3.5.1
     - pydot==1.2.4
     - pygal==2.4.0
-    - pyspark==2.2.1
+    - pyspark==2.4.0
     - s3transfer==0.1.13
     - scipy==1.0.0
     - seaborn==0.8.1
@@ -184,4 +197,3 @@ dependencies:
     - tqdm==4.19.8
     - werkzeug==0.14.1
 prefix: /anaconda3/envs/conda_USER_tensorflow_p36
-
