@@ -13,6 +13,7 @@
 #   env PATH="~/anaconda3/bin:"$PATH conda env update -f /tmp/conda_${USER}_tensorflow_p36.yaml
 # Remove env and start over
 #   env PATH="~/anaconda3/bin:"$PATH conda env remove -p /anaconda3/envs/conda_${USER}_tensorflow_p36
+#   rm -rf ~/anaconda3/envs/conda_lenjoy_tensorflow_p36
 #
 # Usually, run
 #   . ~/anaconda3/etc/profile.d/conda.sh
@@ -197,9 +198,8 @@ dependencies:
     - sklearn==0.0
     - smart-open==1.5.7
     - sqlalchemy==1.2.3
-    - tensorboard==1.0.0a4
+    - tensorboard==1.12.0
     - tensorflow==1.12.0
-    - tensorflow-tensorboard==1.5.1
     - termcolor==1.1.0
     - tqdm==4.19.8
     - werkzeug==0.14.1
