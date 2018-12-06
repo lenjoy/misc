@@ -17,3 +17,7 @@ do
         eval $CMD
     done
 done
+
+
+# Split file randomly
+gawk 'BEGIN {srand()} {f = FILENAME (rand() <= 0.9 ? ".90" : ".10"); print > f}' /tmp/full_data.tsv
