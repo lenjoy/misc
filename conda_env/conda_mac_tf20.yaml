@@ -26,6 +26,10 @@
 #   env PATH=~/anaconda3/envs/conda_${USER}_tf20/bin:$PATH jupyter notebook
 
 name: conda_USER_tf20
+channels:
+  - anaconda
+  - defaults
+dependencies:
   - bleach=3.1.0=py37_0
   - ca-certificates=2019.1.23=0
   - certifi=2019.3.9=py37_0
