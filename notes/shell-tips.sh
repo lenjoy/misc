@@ -21,3 +21,7 @@ done
 
 # Split file randomly
 gawk 'BEGIN {srand()} {f = FILENAME (rand() <= 0.9 ? ".90" : ".10"); print > f}' /tmp/full_data.tsv
+
+
+# show git branch in shell (linux)
+export GIT_PS1_SHOWDIRTYSTATE=1 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
